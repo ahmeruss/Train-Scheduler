@@ -91,14 +91,15 @@ $("#add-train").on("click", function() {
 });
 
 // Firebase watcher + initial loader HINT: This code behaves similarly to .on("child_added")
-  database.ref().orderByChild("dateAdded").limitToLast(5).on("child_added", function(snapshot) {
+// This will only show the 10 latest entries
+  database.ref().orderByChild("dateAdded").limitToLast(10).on("child_added", function(snapshot) {
 
   // Change the HTML to reflect
   $("#new-train").append("<tr><td>" + snapshot.val().trainName + "</td>" +
     "<td>" + snapshot.val().destination + "</td>" + 
-    "<td>" + snapshot.val().frequency + "</td>" + 
+    "<td>" + "Every " + snapshot.val().frequency + " mins" + "</td>" + 
     "<td>" + snapshot.val().nextArrival + "</td>" +
-    "<td>" + snapshot.val().minutesAway + "</td>" +
+    "<td>" + snapshot.val().minutesAway + " mins until arrival" + "</td>" +
     "</td></tr>");
 
 // Handle the errors
