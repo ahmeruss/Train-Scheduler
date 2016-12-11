@@ -95,18 +95,19 @@ $("#add-train").on("click", function() {
   return false; 
 });
 
-$(document).on("click", ".delete", function(){
-  var confirmDelete = confirm("Are you sure you want to delete this entry?");
+// Delete function
+// $(document).on("click", ".delete", function(){
+//   var confirmDelete = confirm("Are you sure you want to delete this entry?");
   
-   if (confirmDelete){
-    var entry = $(this).attr("data-index");
-    database.ref().child(trainIDs[entry]).remove();
-    location.reload();
-   } else{
-     return false;
-   }
+//    if (confirmDelete){
+//     var entry = $(this).attr("data-index");
+//     database.ref().child(trainIDs[entry]).remove();
+//     location.reload();
+//    } else{
+//      return false;
+//    }
   
-});
+// });
 
 // Firebase watcher + initial loader HINT: This code behaves similarly to .on("child_added")
 // This will only show the 25 latest entries
@@ -128,8 +129,8 @@ $(document).on("click", ".delete", function(){
     "<td>" + "Every " + snapshot.val().frequency + " mins" + "</td>" + 
     "<td>" + snapshot.val().nextArrival + "</td>" +
     "<td>" + snapshot.val().minutesAway + " mins until arrival" + "</td>" +
-    "<td><button class='delete btn btn-default btn-sm' data-index='" + index + "'><span class='glyphicon glyphicon-trash'></span></button> " + 
-    "<button type='button' class='btn btn-default btn-sm'><span class='glyphicon glyphicon-edit'></span></button>" +
+   // "<td><button class='delete btn btn-default btn-sm' data-index='" + index + "'><span class='glyphicon glyphicon-trash'></span></button> " + 
+   // "<button type='button' class='btn btn-default btn-sm'><span class='glyphicon glyphicon-edit'></span></button>" +
     "</td></tr>");
 
   index++;
